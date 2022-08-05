@@ -1,12 +1,12 @@
 package stepsdefintion.LoginApi;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,7 +27,8 @@ public class CheckResponseWhenSendRequestSuccessfullySteps {
   public void send_request() {
 	  String requestBody= "{\"email\": \"eve.holt@reqres.in\",\"password\": \"cityslicka\"}";
 	  try {
-		  HttpRequest request = HttpRequest.newBuilder().uri(new URI(url)).POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+		  HttpRequest request = HttpRequest.newBuilder().uri(new URI(url)).headers("Content-Type", "application/json").POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+		 
 		  response =  HttpClient.newHttpClient().send(request, BodyHandlers.ofString());
 	} catch (Exception e) {
 		e.printStackTrace();

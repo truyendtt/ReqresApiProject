@@ -14,7 +14,7 @@ import io.cucumber.java.en.When;
 import static org.testng.Assert.assertEquals;
 
 public class CheckInvalidMethod {
-	String url, method, requestBody ="";
+	String url, method ="";
 	HttpResponse response= null;
   @Given("I have Url {string} and invalid method {string}")
   public void i_have_url_and_invalid_method(String givenUrl, String givenMethod) {

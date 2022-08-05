@@ -27,7 +27,7 @@ public class CheckInValidUrlSteps {
   public void send_request_with_invalid_Url() {
 	  String requestBody= "{\"email\": \"eve.holt@reqres.in\",\"password\": \"cityslicka\"}";
 	  try {
-		  HttpRequest request = HttpRequest.newBuilder().uri(new URI(url)).POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
+		  HttpRequest request = HttpRequest.newBuilder().uri(new URI(url)).headers("Content-Type", "application/json").POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
 		  response =  HttpClient.newHttpClient().send(request, BodyHandlers.ofString());
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -35,7 +35,7 @@ public class CheckInValidUrlSteps {
   }
 
   @Then("The reponse with invalid Url returns status code {int}")
-	public void the_reponse_with_invalid_Url_returns_status_code(int expectedStatusCode) {
+	public void The_reponse_with_invalid_Url_returns_status_code(int expectedStatusCode) {
 		int actualStatusCode = response.statusCode();
 		assertEquals(actualStatusCode,expectedStatusCode );
   }
