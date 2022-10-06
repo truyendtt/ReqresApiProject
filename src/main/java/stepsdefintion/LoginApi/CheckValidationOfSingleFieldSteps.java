@@ -10,7 +10,7 @@ import io.cucumber.java.en.When;
 
 public class CheckValidationOfSingleFieldSteps {
 	String url, method, requestBodyName;
-	@Given("I have Url and method and requestBody")
+	//@Given("I have Url and method and requestBody")
 	public void i_have_url_and_method_and_request_body(List<Map<String, String>> loginTable) {
 	    url = CucumberUtils.getValueByTableKey(loginTable, "url");
 	    method = CucumberUtils.getValueByTableKey(loginTable, "method");

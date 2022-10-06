@@ -2,11 +2,12 @@
 Feature: Check Create User Susscessfully
 
   @Maincase
-  Scenario: Check Create User Susscessfully
+  Scenario Outline: Check Create User Susscessfully
     Given I have Url and method and requestBody
-      | Url                         | method | requestBodyName            |
+      | url                         | method | requestBodyName            |
       | https://reqres.in/api/users | POST   | CreateUserRequestBody.json |
-    When send request
+    When I send the request with valid data
     Then The reponse returns status "<statuscode>" and responsebody "<job>" and "<name>"
+    Examples:
       | statuscode | job    | name     |
-      |        200 | leader | morpheus |
+      |        201 | leader | morpheus |
