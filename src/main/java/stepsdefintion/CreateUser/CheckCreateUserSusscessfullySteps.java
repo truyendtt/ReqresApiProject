@@ -50,26 +50,12 @@ public class CheckCreateUserSusscessfullySteps {
 		Response<Integer, String> result = apiUtils.sendRequest(method, url, requestBody);
 		actualStatusCode = result.getStatusCode();
 		actualResponseBody = result.getResponseBody();
-		Object obj = JSONValue.parse(actualResponseBody);
+		/*Object obj = JSONValue.parse(actualResponseBody);
 		JSONObject jsonObject = (JSONObject) obj;
-		// actualJob = (String) jsonObject.get("job");
-		// actualName = (String) jsonObject.get("name");
-		// JSONObject jsonObject;
-		// JSONParser parser = new JSONParser();
-		// try {
-		// jsonObject= (JsonObject) parser.parse(actualResponseBody);
-		// actualName = (ArrayList<String>) jsonObject.get("name");
-		// } catch (ParseException e) {
-
-		// }
-		// while(iterator.hasNext()) {
-		// System.out.println(iterator.next());
-		// }
 		Object actualName = jsonObject.get("name");
 		String actualNameStr = actualName.toString();
-		actualNameList = new ArrayList<>(Arrays.asList(actualNameStr));
-//		actualNameList = (ArrayList<String>) jsonObject.get("name");
-
+		actualNameList = new ArrayList<>(Arrays.asList(actualNameStr));*/
+		actualNameList = jsonUtils.getArrayValueByKey(actualResponseBody, "name");
 	}
 
 	@Then("The reponse returns status {string} and responsebody {string} and {string}")
