@@ -8,6 +8,7 @@ Feature: Check Create User Susscessfully
       | https://reqres.in/api/users | POST   | CreateUserRequestBody.json |
     When I send the request with valid data
     Then The reponse returns status "<statuscode>" and responsebody "<job>" and "<name>"
-    Examples:
-      | statuscode | job    | name     |
-      |        201 | leader | morpheus |
+
+    Examples: 
+      | statuscode | job     | name      |
+      |        201 | leader  | morpheus  |
